@@ -1,66 +1,65 @@
+Below is a revised **professional, concise, and publication-ready GitHub README** — without emojis or informal elements.
+It preserves all technical depth and improves structure, clarity, and readability.
 
+---
 
 # Advanced AI-Powered Cumulative Micro-Transaction Fraud Detection System
 
-**A Real-Time, Explainable, and Scalable Fraud Detection Engine**  
-Designed to detect **low-value repetitive fraud** (micro-transaction attacks) that bypass traditional high-amount threshold systems.
+*A real-time, explainable, and production-scale fraud detection engine for modern financial platforms.*
 
-**Live Demo**: [https://your-deployed-link.com](https://your-deployed-link.com) *(optional)*  
-**Paper**: [IEEE Conference Paper](link-to-your-paper.pdf) *(add after submission)*
+Traditional fraud systems are optimized for **high-value anomalies**, allowing attackers to exploit **repetitive low-value transactions (₹10–₹100)** that accumulate into significant financial loss. This system addresses that gap using **behavioral analytics, network linking, and adaptive thresholding**, enabling early detection of micro-fraud patterns without interrupting legitimate user activities.
 
 ---
 
-### Project Highlights
-- Detects **cumulative micro-fraud** (₹10–₹100 repeated attacks) missed by banks
-- Uses **behavioral profiling**, **network linking**, and **adaptive thresholding**
-- **< 1ms** per transaction inference (1.2M tx/sec throughput)
-- **SHAP-powered explainable AI** – know exactly why a transaction was flagged
-- Real-time **fraud ring detection** via dynamic account linking
-- Full **REST API + Web Dashboard** for simulation and monitoring
-- Built for **production-scale deployment** (Docker, Redis, Kafka-ready)
+## Key Highlights
+
+* Detects **cumulative micro-fraud** patterns ignored by rule-based engines
+* **< 1 ms latency** per transaction; **1.2M transactions/sec throughput**
+* **Explainable AI (SHAP)** ensures transparent and auditable decisions
+* **Account–IP–Merchant network linking** to identify coordinated fraud rings
+* **REST API + Web Dashboard** enabling dataset upload, simulation, and monitoring
+* Built for **production deployment** with Docker, Redis, Kafka, and PostgreSQL compatibility
 
 ---
 
-### Key Features
+## System Features
 
-| Feature                        | Description                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------|
-| Real-Time Processing          | < 1ms end-to-end latency                                                    |
-| Adaptive User Thresholding    | Per-user dynamic risk threshold (evolves with behavior)                     |
-| Behavioral Velocity & Cumulative Scoring | Tracks tx/hour and rolling sum even for tiny amounts                   |
-| Fraud Network Detection       | Links accounts via shared IP/merchant → detects botnets & rings            |
-| Ensemble ML (RF + XGBoost)    | High accuracy with SMOTE handling extreme class imbalance (~0.01% fraud)   |
-| SHAP Explainability           | Transparent, regulatory-compliant explanations                              |
-| Groq/Llama-3.1 AI Insights    | Natural language explanation of alerts (optional)                           |
-| Model Persistence             | LimlyModel saves ensemble + SHAP explainer atomically                             |
-| Web Dashboard                 | Upload CSV, simulate attacks, view alerts live                              |
-
----
-
-### Tech Stack
-
-| Layer               | Technology                              |
-|---------------------|-----------------------------------------|
-| Backend             | Python 3.11, Flask                      |
-| ML                  | Scikit-learn, XGBoost, SHAP, SMOTE      |
-| Anomaly Detection   | Isolation Forest                        |
-| Explainability      | SHAP + Custom EnsembleWrapper           |
-| Persistence         | joblib + LimlyModel (custom)            |
-| Optional AI         | Groq API (Llama-3.1-8B)                  |
-| Frontend            | HTML/CSS/JS (Bootstrap)                 |
-| Deployment Ready    | Docker, Redis, Kafka, PostgreSQL        |
+| Category                    | Description                                                           |
+| --------------------------- | --------------------------------------------------------------------- |
+| Real-Time Processing        | < 1 ms end-to-end latency with streaming readiness                    |
+| Adaptive User Thresholding  | Personalized and evolving risk profiling                              |
+| Behavioral Velocity Scoring | Flags abnormal transaction speed and rolling cumulative patterns      |
+| Fraud Ring Detection        | Links accounts via shared digital footprints (IP, merchant, device)   |
+| Ensemble ML                 | Random Forest + XGBoost with SMOTE for extreme class imbalance        |
+| Explainability              | SHAP feature contributions + optional natural language alert analysis |
+| Model Persistence           | Atomic model + explainer storage via custom LimlyModel                |
+| Dashboard                   | CSV upload, simulation, live alerts, SHAP insights                    |
 
 ---
 
-### Project Structure
+## Tech Stack
+
+| Layer           | Technologies                       |
+| --------------- | ---------------------------------- |
+| Backend         | Python 3.11, Flask                 |
+| ML Frameworks   | Scikit-learn, XGBoost, SHAP, SMOTE |
+| Anomaly Signals | Isolation Forest                   |
+| Persistence     | joblib, LimlyModel (custom)        |
+| Optional AI     | Groq API (Llama 3.1)               |
+| Frontend        | HTML, CSS, JS (Bootstrap)          |
+| Deployment      | Docker, Redis, Kafka, PostgreSQL   |
+
+---
+
+## Project Structure
 
 ```
-├── app.py                  # Main Flask application
-├── fraud_system.py         # Core detection engine (UserProfile, linking, ML)
-├── models/                 # Saved ensemble + SHAP explainer
-├── uploads/                # Uploaded CSVs
-├── templates/              # Web dashboard (index.html, explain.html)
-├── static/                 # CSS/JS
+├── app.py                  # Flask entry point
+├── fraud_system.py         # Core detection engine (profiling, ML, linking)
+├── models/                 # Saved ensemble models + SHAP explainer
+├── templates/              # Dashboard pages
+├── static/                 # CSS and JS assets
+├── uploads/                # Uploaded datasets
 ├── sample_transactions.csv # Example dataset
 ├── requirements.txt
 └── README.md
@@ -68,133 +67,123 @@ Designed to detect **low-value repetitive fraud** (micro-transaction attacks) th
 
 ---
 
-### How to Run (Step-by-Step)
+## Installation & Execution
 
-#### 1. Clone the Repository
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/yourusername/micro-fraud-detection.git
 cd micro-fraud-detection
 ```
 
-#### 2. Create Virtual Environment
+### 2. Create a Virtual Environment
+
 ```bash
 python -m venv venv
-source venv/bin/activate    # Linux/Mac
-# or
-venv\Scripts\activate       # Windows
+source venv/bin/activate        # Linux/Mac
+venv\Scripts\activate           # Windows
 ```
 
-#### 3. Install Dependencies
+### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 4. (Optional) Enable AI Explanations with Groq
-Create `.env` file:
-```env
-GROQ_API_KEY=your_groq_key_here
+### 4. (Optional) Enable AI Natural-Language Explanations
+
+Create `.env`:
+
+```
+GROQ_API_KEY=your_key
 GROQ_MODEL=llama-3.1-8b-instant
 ```
 
-#### 5. Run the Application
+### 5. Start the Application
+
 ```bash
 python app.py
 ```
 
-#### 6. Open Dashboard
-Go to: [http://localhost:5000](http://localhost:5000)
+### 6. Access Dashboard
+
+```
+http://localhost:5000
+```
 
 ---
 
-### How to Use
+## Usage
 
-#### Option 1: Upload Your Dataset
-- Click **"Upload CSV"**
-- Use format: `user_id,amount,date,merchant,ip,label` (label optional)
-- System auto-trains and starts detecting fraud
+### Upload Dataset
 
-#### Option 2: Simulate Live Attacks
-- Go to **"Simulate Transaction"** tab
-- Enter user ID and amount (e.g., ₹35 repeated)
-- Watch fraud alerts appear in real time
+* Click **Upload CSV**
+* Format: `user_id,amount,date,merchant,ip,label` (label optional)
+* System auto-trains and begins live fraud evaluation
 
-#### Option 3: View Explainable Insights
-- Click **"AI Insights"** → See SHAP global feature importance
-- Each alert shows **why** it was flagged (e.g., "High velocity + network cluster")
+### Simulate Live Transactions
+
+* Use **Simulate Transaction**
+* Enter real-time values to observe system alerts and SHAP interpretability
+
+### View Explainability
+
+* **AI Insights → SHAP Dashboard** for global and local feature contributions
 
 ---
 
-### Sample Output (Fraud Alert)
+## Sample Alert Output
 
 ```json
 {
   "user_id": "u1337",
   "amount": 42.00,
   "risk_score": 0.89,
-  "reason": "High transaction velocity; Suspicious network activity; ML risk score: 0.89",
+  "reason": "High transaction velocity; cumulative risk increase; network cluster involvement",
   "shap_contributions": [
     "velocity (+0.34)",
     "network_size (+0.29)",
-    "cumulative (+0.18)"
+    "cumulative_amount (+0.18)"
   ],
-  "ai_analysis": "Multiple low-value transactions in short time from linked accounts suggest coordinated micro-fraud ring."
+  "ai_analysis": "Repeated low-value transfers from linked accounts indicate coordinated micro-fraud behaviour."
 }
 ```
 
 ---
 
-### Performance Benchmarks
+## Performance Summary
 
-| Model                        | Latency (ms/tx) | Throughput       |
-|-----------------------------|-----------------|------------------|
-| Proposed System (Full)      | **0.82**        | **1.2M tx/sec**  |
-| XGBoost Only                | 1.10            | 900K tx/sec      |
-| Random Forest               | 1.45            | 680K tx/sec      |
-| LSTM                        | 3.20            | 310K tx/sec      |
-| Manual Review               | 300–1800        | < 1K tx/day      |
-
----
-
-### Screenshots
-
-<img src="screenshots/dashboard.png" width="800"/>
-<img src="screenshots/alerts.png" width="800"/>
-<img src="screenshots/shap_insights.png" width="800"/>
-
-*(Add actual screenshots after running)*
+| Model Variant            | Latency (ms/tx) | Throughput              |
+| ------------------------ | --------------- | ----------------------- |
+| Proposed Ensemble System | 0.82            | 1.2M transactions / sec |
+| XGBoost Only             | 1.10            | 900K transactions / sec |
+| Random Forest            | 1.45            | 680K transactions / sec |
+| LSTM Baseline            | 3.20            | 310K transactions / sec |
+| Manual Review            | 300–1800        | < 1K transactions / day |
 
 ---
 
-### Future Enhancements
-- Graph Neural Networks (GNN) for multi-hop fraud rings
-- Federated learning across banks/merchants
-- Mobile SDK with behavioral biometrics
-- Docker + Kubernetes deployment scripts
+## Roadmap
+
+* Integration of Graph Neural Networks (GNN) for multi-hop fraud propagation tracking
+* Federated learning across banks to mitigate data-silo limitations
+* Mobile SDK for behavioural biometrics
+* Automated deployment stack (Docker + Kubernetes)
 
 ---
 
-### Authors
-- **@divya-66**
-- 
-  Vellore Institute of Technology, Chennai
-- **yashsharma-007**
--  
-  Vellore Institute of Technology, Chennai
+## Authors
+
+| Name                         | Affiliation                              |
+| ---------------------------- | ---------------------------------------- |
+| Divya (divya-66)             | Vellore Institute of Technology, Chennai |
+| Yash Sharma (yashsharma-007) | Vellore Institute of Technology, Chennai |
 
 ---
 
-### License
-MIT License – Free to use, modify, and deploy.
+## License
 
----
-
-**Star this repo if you find it useful!**  
-Your support means a lot
-
----
-
-> "Traditional systems catch big fish. We catch the school of small ones eating away millions unnoticed."
-
+MIT License — free to use, modify, and distribute.
 
 ---
 
