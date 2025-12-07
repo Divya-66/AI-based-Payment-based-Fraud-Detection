@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Fraud Is Detected</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .hero { background: linear-gradient(90deg,#0d6efd,#6610f2); color:#fff; padding:48px 0; }
+    .card + .card { margin-top: 1rem; }
+    .badge-rule { background: #0d6efd; }
+    .code { background:#212529; color:#e9ecef; border-radius: .5rem; padding:1rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body>
+  <header class="hero mb-4">
+    <div class="container">
+      <h1 class="mb-1">How Our System Detects Fraud</h1>
+      <p class="mb-0">A detailed walkthrough of heuristics, behavioral modeling, ML signals, and on‑demand AI explanations.</p>
+    </div>
+  </header>
+
+  <div class="container mb-5">
+    <a href="/" class="btn btn-outline-light bg-primary mb-3"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+
+    <div class="card">
+      <div class="card-header">Overview</div>
+      <div class="card-body">
+        <p>
+          The system combines fast heuristics, behavioral profiling, optional ensemble ML, and network link analysis to
+          flag suspicious micro‑transactions. You can optionally request an AI explanation for any specific alert.
+        </p>
+        <div class="alert alert-info mb-0">
+          <i class="fas fa-lightbulb me-2"></i>
+          AI analysis is performed on demand only to save cost and avoid unnecessary calls.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Behavioral & Heuristic Rules</div>
+      <div class="card-body">
+        <ul class="mb-0">
+          <li><span class="badge badge-rule">Threshold</span> Amount exceeds an adaptive user threshold: avg × 2 + 10.</li>
+          <li><span class="badge badge-rule">Frequency</span> High frequency anomaly: total amount/time higher than expected for the user.</li>
+          <li><span class="badge badge-rule">Velocity</span> High transaction velocity: many txns in a short window.</li>
+          <li><span class="badge badge-rule">Micro‑pattern</span> Repeated small amounts to same merchant/IP.</li>
+          <li><span class="badge badge-rule">Cumulative</span> Recent sum over threshold: high potential loss concentration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Network & Optional ML Signals</div>
+      <div class="card-body">
+        <ul class="mb-0">
+          <li><strong>Linked Accounts:</strong> Users sharing merchants/IPs are linked; high linkage counts signal possible collusion.</li>
+          <li><strong>Ensemble Risk (optional):</strong> RandomForest + XGBoost probability when sufficient data is available.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">On‑Demand AI Explanations</div>
+      <div class="card-body">
+        <p>
+          Click the robot button in the dashboard table to analyze a transaction with Gemini. The system uses a safe,
+          concise prompt and handles blocked/empty responses. If AI is unavailable, a heuristic explanation is returned.
+        </p>
+        <div class="code mb-3"><pre><code>POST /analyze-transaction
+Body: {
+  "user_id": "user123",
+  "amount": 25.50,
+  "date": "2025-10-01T05:30:00.000Z",
+  "reason": "High frequency anomaly; High transaction velocity"
+}</code></pre></div>
+        <p class="mb-0 text-muted">Note: Set the GOOGLE_API_KEY environment variable to enable real AI output.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Data Requirements</div>
+      <div class="card-body">
+        <ul class="mb-0">
+          <li><strong>Required:</strong> user_id, amount, date (YYYY-MM-DD or ISO)</li>
+          <li><strong>Optional:</strong> merchant, ip</li>
+          <li><strong>Recommended:</strong> labeled CSV with a <code>label</code> column for ML training/evaluation</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="text-muted mt-4">Built for AI-driven micro‑transaction monitoring.</footer>
+  </div>
+</body>
+</html>
