@@ -174,9 +174,11 @@ Go to: [http://localhost:5000](http://localhost:5000)
 ---
 
 ### Authors
-- **Yash Sharma** 
+- **@divya-66**
+- 
   Vellore Institute of Technology, Chennai
-- **Divya Sabharwal**  
+- **yashsharma-007**
+-  
   Vellore Institute of Technology, Chennai
 
 ---
