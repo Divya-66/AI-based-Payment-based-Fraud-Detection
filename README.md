@@ -1,6 +1,5 @@
-Here’s a **professional, clean, and complete GitHub README** for your project that will impress your teacher, recruiters, and anyone reviewing your work.
 
-```markdown
+
 # Advanced AI-Powered Cumulative Micro-Transaction Fraud Detection System
 
 **A Real-Time, Explainable, and Scalable Fraud Detection Engine**  
